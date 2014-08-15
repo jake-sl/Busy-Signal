@@ -26,7 +26,7 @@ $(document).ready(function()
 		setBrightness(254)
 	});
 	
-	$(document).mousewheel(function()
+	$(document).scroll(function()
 	{
 		busyness = 5;
 		setBrightness(254)
