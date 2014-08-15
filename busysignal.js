@@ -5,7 +5,7 @@ $(document).ready(function()
 {
 	$("#busy").click(function()
 	{
-		toggleLight(25500);
+		toggleLight(65535);
 	});
 	
 	$("#away").click(function()
@@ -15,7 +15,7 @@ $(document).ready(function()
 	
 	$("#available").click(function()
 	{
-		toggleLight(65535);
+		toggleLight(25500);
 	});
 });
 
