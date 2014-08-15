@@ -3,7 +3,7 @@
   "version": "1.1",
   "description": "Let people know if you're approachable in an open office enviornment using Philips Hue!",
   "permissions": [
-    "bookmarks"
+    "tabs"
   ],
   "browser_action": {
       "default_title": "Busy Signal",
