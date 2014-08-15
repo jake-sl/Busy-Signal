@@ -1,37 +1,45 @@
 // Copyright (c) 2014 Andrew Rodgers, Andrew McPherson, and Jake Brown. All rights reserved.
 // MIT license
 
+var busyness = 0;
+
 $(document).ready(function()
 {
-	$("#busy").click(function()
+	$("textarea").keyup(function()
 	{
-		toggleLight(25500);
+		busyness = 5;
+		setLight(254)
 	});
-	
-	$("#away").click(function()
+
+	setInterval(function()
 	{
-		toggleLight(46920);
-	});
-	
-	$("#available").click(function()
-	{
-		toggleLight(65535);
-	});
+		busyness -= 1;
+		if(busyness <= 0)
+			setLight(100);
+	},
+	0.5 * 1000)
 });
 
-function toggleLight(color)
+function setLight(light)
 {
-	jQuery.ajax({
-		type: "PUT",
-		url: "http://10.0.0.180/api/newdeveloper/lights/3/state",
-		data: JSON.stringify({
-			on: true,
-			hue: color
-		}),
-		processData: false
-	})
-	.then(function(data)
+	if(this.light != light)
 	{
-		console.log(JSON.stringify(data, undefined, 2));
-	});
+		jQuery.ajax({
+			type: "PUT",
+			url: "http://10.0.0.180/api/newdeveloper/lights/3/state",
+			data: JSON.stringify({
+				on: true,
+				bri: light,
+				transitiontime: 30
+			}),
+			processData: false
+		})
+		.then(function(data)
+		{
+			console.log(JSON.stringify(data, undefined, 2));
+		});
+
+		this.light = light;
+	}
+
 }
