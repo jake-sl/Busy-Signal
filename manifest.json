@@ -1,12 +1,12 @@
 {
-  "name": "My Bookmarks",
+  "name": "Busy Signal",
   "version": "1.1",
-  "description": "A browser action with a popup dump of all bookmarks, including search, add, edit and delete.",
+  "description": "Let people know if you're approachable in an open office enviornment using Philips Hue!",
   "permissions": [
     "bookmarks"
   ],
   "browser_action": {
-      "default_title": "My Bookmarks",
+      "default_title": "Busy Signal",
       "default_icon": "icon.png",
       "default_popup": "popup.html"
   },
