@@ -3,12 +3,12 @@
   "version": "1.1",
   "description": "Let people know when you're approachable in your open office enviornment.",
   "permissions": [
-    "bookmarks"
+    
   ],
   "browser_action": {
       "default_title": "Busy Signal",
       "default_icon": "icon.png",
-      "default_popup": "popup.html"
+      "default_popup": "busysignal.html"
   },
   "manifest_version": 2,
   "content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'"
