@@ -5,31 +5,46 @@ var busyness = 0;
 
 $(document).ready(function()
 {
+	$("#busy").click(function()
+	{
+		setColor(65535);
+	});
+	
+	$("#away").click(function()
+	{
+		setColor(46920);
+	});
+	
+	$("#available").click(function()
+	{
+		setColor(25500);
+	});
+
 	$("textarea").keyup(function()
 	{
 		busyness = 5;
-		setLight(254)
+		setBrightness(254)
 	});
 
 	setInterval(function()
 	{
 		busyness -= 1;
 		if(busyness <= 0)
-			setLight(100);
+			setBrightness(100);
 	},
 	0.5 * 1000)
 });
 
-function setLight(light)
+function setBrightness(brightness)
 {
-	if(this.light != light)
+	if(this.brightness != brightness)
 	{
 		jQuery.ajax({
 			type: "PUT",
 			url: "http://10.0.0.180/api/newdeveloper/lights/3/state",
 			data: JSON.stringify({
 				on: true,
-				bri: light,
+				bri: brightness,
 				transitiontime: 30
 			}),
 			processData: false
@@ -41,5 +56,21 @@ function setLight(light)
 
 		this.light = light;
 	}
+}
 
+function setColor(color)
+{
+	jQuery.ajax({
+		type: "PUT",
+		url: "http://10.0.0.180/api/newdeveloper/lights/3/state",
+		data: JSON.stringify({
+			on: true,
+			hue: color
+		}),
+		processData: false
+	})
+	.then(function(data)
+	{
+		console.log(JSON.stringify(data, undefined, 2));
+	});
 }
