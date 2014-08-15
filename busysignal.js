@@ -5,21 +5,28 @@ $(document).ready(function()
 {
 	$("#busy").click(function()
 	{
-		toggleLight();
+		toggleLight(25500);
+	});
+	
+	$("#away").click(function()
+	{
+		toggleLight(46920);
+	});
+	
+	$("#available").click(function()
+	{
+		toggleLight(65535);
 	});
 });
 
-var state = true;
-
-function toggleLight()
+function toggleLight(color)
 {
-	state = !state;
-	
 	jQuery.ajax({
 		type: "PUT",
 		url: "http://10.0.0.180/api/newdeveloper/lights/3/state",
 		data: JSON.stringify({
-			on: state
+			on: true,
+			hue: color
 		}),
 		processData: false
 	})
