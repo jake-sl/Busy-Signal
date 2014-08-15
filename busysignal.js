@@ -20,7 +20,13 @@ $(document).ready(function()
 		setColor(25500);
 	});
 
-	$("textarea").keyup(function()
+	$(document).keyup(function()
+	{
+		busyness = 5;
+		setBrightness(254)
+	});
+	
+	$(document).mousewheel(function()
 	{
 		busyness = 5;
 		setBrightness(254)
@@ -54,7 +60,7 @@ function setBrightness(brightness)
 			console.log(JSON.stringify(data, undefined, 2));
 		});
 
-		this.light = light;
+		this.brightness = brightness;
 	}
 }
 
