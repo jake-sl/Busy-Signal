@@ -1,44 +1,30 @@
 // Copyright (c) 2014 Andrew Rodgers, Andrew McPherson, and Jake Brown. All rights reserved.
 // MIT license
 
-function isBusy() {
-
-   
-}
-
-
-function isAway() {
-
-
-}
-
-
-function isAvailable() {
-
-
-}
+$(document).ready(function()
+{
+	$("#busy").click(function()
+	{
+		toggleLight();
+	});
+});
 
 var state = true;
 
 function toggleLight()
 {
-	console.log("!!");
+	state = !state;
 	
-	$("button").click(function()
+	jQuery.ajax({
+		type: "PUT",
+		url: "http://10.0.0.180/api/newdeveloper/lights/3/state",
+		data: JSON.stringify({
+			on: state
+		}),
+		processData: false
+	})
+	.then(function(data)
 	{
-		state = !state;
-		
-		jQuery.ajax({
-			type: "PUT",
-			url: "http://10.0.0.180/api/newdeveloper/lights/3/state",
-			data: JSON.stringify({
-				on: state
-			}),
-			processData: false
-		})
-		.then(function(data)
-		{
-			console.log(JSON.stringify(data, undefined, 2));
-		});
+		console.log(JSON.stringify(data, undefined, 2));
 	});
 }
