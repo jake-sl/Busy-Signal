@@ -2,6 +2,7 @@
 // MIT license
 
 var busyness = 0;
+var brightness = {min: 254, max: 200};
 
 $(document).ready(function()
 {
@@ -23,20 +24,20 @@ $(document).ready(function()
 	$(document).keyup(function()
 	{
 		busyness = 5;
-		setBrightness(254)
+		setBrightness(brightness.max)
 	});
 	
 	$(document).scroll(function()
 	{
 		busyness = 5;
-		setBrightness(254)
+		setBrightness(brightness.max)
 	});
 
 	setInterval(function()
 	{
 		busyness -= 1;
 		if(busyness <= 0)
-			setBrightness(100);
+			setBrightness(brightness.min);
 	},
 	0.5 * 1000)
 });
