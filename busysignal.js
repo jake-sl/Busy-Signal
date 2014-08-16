@@ -21,7 +21,7 @@ $(document).ready(function()
 
 	$("#away").click(function()
 	{
-		setColor(46920);
+		setPowerState();
 	});
 	
 	$("#available").click(function()
@@ -81,6 +81,22 @@ function setColor(color)
 		data: JSON.stringify({
 			on: true,
 			hue: color
+		}),
+		processData: false
+	})
+	.then(function(data)
+	{
+		//console.log(JSON.stringify(data, undefined, 2));
+	});
+}
+
+function setPowerState()
+{
+	jQuery.ajax({
+		type: "PUT",
+		url: "http://10.0.0.180/api/newdeveloper/lights/3/state",
+		data: JSON.stringify({
+			on: false,
 		}),
 		processData: false
 	})
