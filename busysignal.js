@@ -94,8 +94,7 @@ function setPowerState()
 		type: "PUT",
 		url: lightLocation,
 		data: JSON.stringify({
-			on: false,
-			transitiontime: 30
+			on: false
 		}),
 		processData: false
 	})
