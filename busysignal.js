@@ -1,6 +1,11 @@
 // Copyright (c) 2014 Andrew Rodgers, Andrew McPherson, and Jake Brown. All rights reserved.
 // MIT license
 
+	var lightIP = "10.0.0.180"
+	var lightID = "3"
+	var lightUser = "newdeveloper"
+	var lightLocation = "http://"+lightIP+"/api/"+lightUser+"/lights/"+lightID+"/state";
+
 $(document).ready(function()
 {
 	var busyness = 0;
@@ -51,10 +56,8 @@ $(document).ready(function()
 	0.5 * 1000)
 });
 
-	var lightIP = "10.0.0.180"
-	var lightID = "3"
-	var lightUser = "newdeveloper"
-	var lightLocation = "http://"+lightIP+"/api/"+lightUser+"/lights/"+lightID+"/state";
+	
+
 
 function setBrightness(brightness)
 {
@@ -86,7 +89,8 @@ function setColor(color)
 		url: lightLocation,
 		data: JSON.stringify({
 			on: true,
-			hue: color
+			hue: color,
+			transitiontime: 30
 		}),
 		processData: false
 	})
@@ -103,6 +107,7 @@ function setPowerState()
 		url: lightLocation,
 		data: JSON.stringify({
 			on: false,
+			transitiontime: 30
 		}),
 		processData: false
 	})
