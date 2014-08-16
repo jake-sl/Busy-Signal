@@ -1,13 +1,13 @@
 // Copyright (c) 2014 Andrew Rodgers, Andrew McPherson, and Jake Brown. All rights reserved.
 // MIT license
 
-var busyness = 0;
-
 $(document).ready(function()
 {
+	var busyness = 0;
+
 	$(document).keyup(function()
 	{
-		busyness = 5;
+		busyness = Math.max(busyness, 5);
 		setBrightness(254)
 	});
 	
