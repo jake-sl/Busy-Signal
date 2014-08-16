@@ -19,26 +19,6 @@ $(document).ready(function()
 	{
 		setColor(25500);
 	});
-
-	$(document).keyup(function()
-	{
-		busyness = 5;
-		setBrightness(254)
-	});
-	
-	$(document).scroll(function()
-	{
-		busyness = 5;
-		setBrightness(254)
-	});
-
-	setInterval(function()
-	{
-		busyness -= 1;
-		if(busyness <= 0)
-			setBrightness(100);
-	},
-	0.5 * 1000)
 });
 
 function setBrightness(brightness)

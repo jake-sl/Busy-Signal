@@ -1,9 +1,7 @@
 // Copyright (c) 2014 Andrew Rodgers, Andrew McPherson, and Jake Brown. All rights reserved.
 // MIT license
 
-alert("hello world!");
-
-/*var busyness = 0;
+var busyness = 0;
 
 $(document).ready(function()
 {
@@ -15,7 +13,7 @@ $(document).ready(function()
 	
 	$(document).scroll(function()
 	{
-		busyness = 5;
+		busyness = Math.max(busyness, 2);
 		setBrightness(254)
 	});
 
@@ -49,4 +47,4 @@ function setBrightness(brightness)
 
 		this.brightness = brightness;
 	}
-}*/
+}
