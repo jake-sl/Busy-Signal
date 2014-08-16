@@ -1,6 +1,6 @@
-// Copyright (c) 2014 Andrew McPherson, Andrew Rodgers, and Jake Brown. All rights reserved.
+// Copyright (c) 2014 Andrew Rodgers, Andrew McPherson, and Jake Brown. All rights reserved.
 // MIT license
-
+alert('hello world');
 $(document).ready(function()
 {
 	var busyness = 0;
