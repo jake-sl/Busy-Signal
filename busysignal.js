@@ -5,6 +5,7 @@ $(document).ready(function()
 {
 	var busyness = 0;
 	var brightness = {min: 100, max: 254};
+	
 
 	$("#busy").click(function()
 	{
@@ -50,13 +51,18 @@ $(document).ready(function()
 	0.5 * 1000)
 });
 
+	var lightIP = "10.0.0.180"
+	var lightID = "3"
+	var lightUser = "newdeveloper"
+	var lightLocation = "http://"+lightIP+"/api/"+lightUser+"/lights/"+lightID+"/state";
+
 function setBrightness(brightness)
 {
 	if(this.brightness != brightness)
 	{
 		jQuery.ajax({
 			type: "PUT",
-			url: "http://10.0.0.180/api/newdeveloper/lights/3/state",
+			url: lightLocation,
 			data: JSON.stringify({
 				on: true,
 				bri: brightness,
@@ -77,7 +83,7 @@ function setColor(color)
 {
 	jQuery.ajax({
 		type: "PUT",
-		url: "http://10.0.0.180/api/newdeveloper/lights/3/state",
+		url: lightLocation,
 		data: JSON.stringify({
 			on: true,
 			hue: color
@@ -94,7 +100,7 @@ function setPowerState()
 {
 	jQuery.ajax({
 		type: "PUT",
-		url: "http://10.0.0.180/api/newdeveloper/lights/3/state",
+		url: lightLocation,
 		data: JSON.stringify({
 			on: false,
 		}),
