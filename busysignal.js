@@ -8,8 +8,7 @@
 
 $(document).ready(function()
 {
-<<<<<<< HEAD
-=======
+
 	var busyness = 0;
 	var brightness = {min: 100, max: 254};
 	
@@ -18,8 +17,7 @@ $(document).ready(function()
 	{
 		setColor(65535);
 	});
-	
->>>>>>> feature/scroll
+
 	$("#maxBrightness").change(function()
 	{
 		brightness.max = parseInt($(this).val());
@@ -44,8 +42,7 @@ $(document).ready(function()
 	});
 });
 
-<<<<<<< HEAD
-=======
+
 	
 
 
@@ -72,7 +69,7 @@ function setBrightness(brightness)
 	}
 }
 
->>>>>>> feature/scroll
+
 function setColor(color)
 {
 	jQuery.ajax({
