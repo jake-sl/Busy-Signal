@@ -1,15 +1,24 @@
 // Copyright (c) 2014 Andrew Rodgers, Andrew McPherson, and Jake Brown. All rights reserved.
 // MIT license
 
-var busyness = 0;
-
 $(document).ready(function()
 {
+	var busyness = 0;
+	var brightness = {min: 100, max: 254};
+
 	$("#busy").click(function()
 	{
 		setColor(65535);
 	});
 	
+	$("#maxBrightness").change(function()
+	{
+		brightness.max = parseInt($(this).val());
+		console.log(brightness.max);
+		busyness = 3;
+		setBrightness(brightness.max);
+	});
+
 	$("#away").click(function()
 	{
 		setColor(46920);
@@ -23,21 +32,21 @@ $(document).ready(function()
 	$(document).keyup(function()
 	{
 		busyness = 5;
-		setBrightness(254)
+		setBrightness(brightness.max)
 	});
 	
 	$(document).scroll(function()
 	{
 		busyness = 5;
-		setBrightness(254)
+		setBrightness(brightness.max)
 	});
 
 	setInterval(function()
 	{
 		busyness -= 1;
 		if(busyness <= 0)
-			setBrightness(100);
-	},
+			setBrightness(brightness.min);
+	}.bind(this),
 	0.5 * 1000)
 });
 
@@ -57,7 +66,7 @@ function setBrightness(brightness)
 		})
 		.then(function(data)
 		{
-			console.log(JSON.stringify(data, undefined, 2));
+			//console.log(JSON.stringify(data, undefined, 2));
 		});
 
 		this.brightness = brightness;
@@ -77,6 +86,6 @@ function setColor(color)
 	})
 	.then(function(data)
 	{
-		console.log(JSON.stringify(data, undefined, 2));
+		//console.log(JSON.stringify(data, undefined, 2));
 	});
 }
